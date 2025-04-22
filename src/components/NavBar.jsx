@@ -8,10 +8,10 @@ const NavBar = () => {
   return (
     <nav className="fixed bottom-0 w-full z-50 border-t-1 border-amber-50">
          <ul className="py-4 px-3 flex justify-between text-white">
-                <ol className="flex justify-between"><HomeFilledIcon/></ol>
-                <ol className="flex justify-between"><ExploreIcon/></ol>
-                <ol className="flex justify-between"><PostAddIcon/></ol>
-                <ol className="flex justify-between"><Person2Icon/></ol>
+                <ol className="flex justify-between"><HomeFilledIcon fontSize="large" /></ol>
+                <ol className="flex justify-between"><ExploreIcon fontSize="large" /></ol>
+                <ol className="flex justify-between"><PostAddIcon fontSize="large" /></ol>
+                <ol className="flex justify-between"><Person2Icon fontSize="large" /></ol>
          </ul>
     </nav>
   );
