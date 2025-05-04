@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
+:root {
+  background-color: #000000;
+}
+
+.fonttt {
+  font-family: "Special Gothic Expanded One", sans-serif;
+}
