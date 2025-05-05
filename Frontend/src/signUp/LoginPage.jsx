@@ -38,7 +38,7 @@ const LoginPage = () => {
                 
               </div>
               <p className="text-center text-xs text text-gray-400 py-5 px-2 ">By signing up, you agree to our <span className="text-blue-800 ">Terms, Privacy Policy</span> and <span className="text-blue-800 "> Cookies Policy</span>.</p>
-              <button className="m-auto mt-3 flex justify-center w-[45%] py-2 bg-amber-50 text-black font-medium">Login</button>
+              <button className="m-auto mt-3 flex justify-center w-[45%] rounded-sm py-2 bg-amber-50 text-black font-medium">Login</button>
               
             </div>
             
