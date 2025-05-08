@@ -7,10 +7,11 @@ function App() {
 
   return (
     <>
-
+    <BrowserRouter>
       {/* <NavBar/> */}
-      <LoginPage/>
+       <LoginPage/>
 
+    </BrowserRouter>
     </>
   )
 }
