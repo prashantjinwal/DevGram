@@ -1,4 +1,5 @@
 import { TextField } from "@mui/material";
+import { Link } from "react-router";
 
 const textstyle = {
   input: {
@@ -54,7 +55,7 @@ const LoginPage = () => {
         <p className="text-gray-400 p-5 text-center">
           Don't have account?{" "}
           <a className="text-blue-800" href="http://">
-            Sign Up
+           <Link to="/signup" >Sign Up</Link> 
           </a>
         </p>
       </div>
