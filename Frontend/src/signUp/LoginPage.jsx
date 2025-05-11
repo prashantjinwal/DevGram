@@ -38,8 +38,7 @@ const LoginPage = () => {
             type="email"
             sx={textstyle}
             fullWidth
-            InputLabelProps={{ style: { fontSize: "0.95rem" } }}
-            InputProps={{ style: { fontSize: "1rem" } }}
+           
           />
           <TextField
             id="outlined-password"
@@ -47,23 +46,22 @@ const LoginPage = () => {
             type="password"
             sx={textstyle}
             fullWidth
-            InputLabelProps={{ style: { fontSize: "0.95rem" } }}
-            InputProps={{ style: { fontSize: "1rem" } }}
+           
           />
         </div>
 
         <p className="text-center text-xs sm:text-sm text-gray-400 py-4 sm:py-5 px-2">
           By signing up, you agree to our{" "}
-          <span className="text-blue-800">Terms, Privacy Policy</span> and{" "}
-          <span className="text-blue-800">Cookies Policy</span>.
+          <span className="text-blue-800 font-semibold ">Terms, Privacy Policy</span> and{" "}
+          <span className="text-blue-800 font-semibold">Cookies Policy</span>.
         </p>
 
-        <button className="m-auto mt-3 flex justify-center w-[60%] sm:w-[45%] rounded-sm py-2 bg-amber-50 text-black font-medium text-sm sm:text-base">
+        <button className="m-auto mt-3 cursor-pointer flex justify-center w-[60%] sm:w-[45%] rounded-sm py-2 bg-amber-50 text-black font-medium text-sm sm:text-base">
           Login
         </button>
 
         <p className="text-gray-400 pt-5 text-xs sm:text-sm text-center">
-          Don't have account?{" "}
+          You Don't have account?{" "}
           <Link to="/signup" className="text-blue-800 underline">
             Sign Up
           </Link>
@@ -74,4 +72,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
