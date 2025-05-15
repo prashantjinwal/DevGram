@@ -1,7 +1,15 @@
 import express from "express"
-const app = express();
+import connectDB from "./db/db.js";
+import dotenv from "dotenv";
 
-app.get('/', (res,res)=>{
+const app = express();
+connectDB();
+
+dotenv.config({
+    path: './env'
+})
+
+app.get('/', (req,res)=>{
     res.send("server is ready");
 })
 
