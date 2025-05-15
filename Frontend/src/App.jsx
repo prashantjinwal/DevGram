@@ -3,6 +3,7 @@ import './App.css'
 import LoginPage from './signUp/LoginPage'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SignUp from './signUp/SignUp';
+import Tesing from './components/testing';
 
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
         <Route path="/" element={<LoginPage/>} /> 
         <Route path="/signup" element={<SignUp/>} />
       </Routes>
-      {/* hellpo */}
+      
+      
        
 
     </BrowserRouter>

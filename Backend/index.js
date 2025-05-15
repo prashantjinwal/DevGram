@@ -1,13 +1,20 @@
 import express from "express"
 import connectDB from "./db/db.js";
 import dotenv from "dotenv";
-
 const app = express();
-connectDB();
+
 
 dotenv.config({
     path: './env'
 })
+connectDB();
+
+// testing
+// app.get('/joke1', (req, res) => {
+//   res.json({ joke: "Why did the scarecrow win an award? Because he was outstanding in his field!" });
+// });
+
+
 
 app.get('/', (req,res)=>{
     res.send("server is ready");
