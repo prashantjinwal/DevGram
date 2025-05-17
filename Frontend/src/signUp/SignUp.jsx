@@ -2,7 +2,7 @@ import { TextField } from "@mui/material";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../axios/axios";// Axios instance
-import { SButton } from "../components/buttons/submit";
+import { SButton } from "../components/buttons/Submit";
 
 const textstyle = {
   input: {
