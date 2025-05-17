@@ -1,12 +1,14 @@
 import { TextField } from "@mui/material";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../axios/axios";// Axios instance
+import { SButton } from "../components/buttons/submit";
 
 const textstyle = {
   input: {
     color: "#e9ecef",
     backgroundColor: "#202020",
-    fontSize: "1rem", // responsive font
+    fontSize: "1rem",
   },
   label: {
     color: "#e9ecef",
@@ -26,37 +28,58 @@ const textstyle = {
   },
 };
 
-
 const SignUp = () => {
-    const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState(""); // if needed
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
-    } else {
-      setError('');
-      alert('Passwords match!');
-      // Proceed with your form submission logic
+      return setError("Passwords do not match");
     }
-  }
-    return (
-        <>
-        <div className="min-h-screen flex justify-center items-center bg-black px-3 py-6">
+
+    try {
+      const res = await api.post("/auth/register", {
+        email,
+        password,
+        name, // optional — backend must handle it
+      });
+
+      // Save token or user
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+
+      // Redirect to dashboard or home
+      navigate("/");
+    } catch (err) {
+      const message =
+        err.response?.data?.message || "Signup failed. Try again.";
+      setError(message);
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex justify-center items-center bg-black px-3 py-6">
       <div className="border border-amber-50 p-6 sm:p-10 w-full max-w-[95%] sm:max-w-[80%] md:max-w-[60%] lg:max-w-[40%] xl:max-w-[30%] text-amber-50">
         <h2 className="fonttt flex justify-center text-3xl sm:text-4xl md:text-5xl mb-6">Dev.Gram</h2>
 
-        <div className="flex w-full flex-col gap-4 sm:gap-5 mb-5 mt-8">
-          
+        <form
+          onSubmit={handleSubmit}
+          className="flex w-full flex-col gap-4 sm:gap-5 mb-5 mt-8"
+        >
           <TextField
             id="outlined-name"
-            label="name"
-            type="name"
+            label="Name"
+            type="text"
             sx={textstyle}
             fullWidth
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
 
           <TextField
@@ -65,54 +88,47 @@ const SignUp = () => {
             type="email"
             sx={textstyle}
             fullWidth
-           
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
+
           <TextField
             id="outlined-password"
             label="Password"
             type="password"
             sx={textstyle}
             fullWidth
-            
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-        />
-          
-      <TextField
-        label="Confirm Password"
-        type="password"
-        fullWidth
-         sx={textstyle}
-        
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
-        required
-        error={!!error}
-        helperText={error}
-      />
-        </div>
+          />
 
-        <p className="text-center text-xs sm:text-sm text-gray-400 py-4 sm:py-5 px-2">
-          By signing up, you agree to our{" "}
-          <span className="text-blue-800 font-semibold ">Terms, Privacy Policy</span> and{" "}
-          <span className="text-blue-800 font-semibold ">Cookies Policy</span>.
-        </p>
+          <TextField
+            label="Confirm Password"
+            type="password"
+            fullWidth
+            sx={textstyle}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+            error={!!error}
+            helperText={error}
+          />
 
-        <button onSubmit={handleSubmit} className="m-auto mt-3 cursor-pointer flex justify-center w-[60%] sm:w-[45%] rounded-sm py-2 bg-amber-50 text-black font-medium text-sm sm:text-base">
-          Login
-        </button>
+          {/* submit button  */}
+          <SButton text="Sign Up"/>
+
+        </form>
 
         <p className="text-gray-400 pt-5 text-xs sm:text-sm text-center">
-          You already have account?{" "}
+          You already have an account?{" "}
           <Link to="/" className="text-blue-800 underline">
-            Login In
+            Log In
           </Link>
         </p>
       </div>
     </div>
-        </>
-    );
-}
+  );
+};
 
-export default SignUp
+export default SignUp;
