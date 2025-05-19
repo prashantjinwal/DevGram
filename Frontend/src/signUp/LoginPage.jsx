@@ -5,30 +5,8 @@ import { useState } from "react";
 import api from "../axios/axios";// your axios instance
 import { SButton } from "../components/buttons/Submit";
 import { motion } from "framer-motion";
+import { textstyle } from "./style";
 
-const textstyle = {
-  input: {
-    color: "#e9ecef",
-    backgroundColor: "#202020",
-    fontSize: "1rem",
-  },
-  label: {
-    color: "#e9ecef",
-    opacity: 0.5,
-    fontSize: "0.9rem",
-  },
-  "& .MuiOutlinedInput-root": {
-    "& fieldset": {
-      borderColor: "#e9ecef",
-    },
-    "&:hover fieldset": {
-      borderColor: "#e9ecef",
-    },
-    "&.Mui-focused fieldset": {
-      borderColor: "#e9ecef",
-    },
-  },
-};
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");

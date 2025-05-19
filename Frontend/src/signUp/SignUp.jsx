@@ -9,7 +9,6 @@ import { motion } from "framer-motion";
 
 
 
-
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState(""); // if needed
