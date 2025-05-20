@@ -3,7 +3,7 @@ import './App.css'
 import LoginPage from './signUp/LoginPage'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SignUp from './signUp/SignUp';
-import NavBar from './components/NavBar';
+import { SideBar } from './components/Navigator/SideBar';
 
 
 function App() {
@@ -13,13 +13,10 @@ function App() {
     <BrowserRouter>
       
       <Routes>
-        <Route path="/dashboard" element={<NavBar/>} />
+        <Route path="/dashboard" element={<SideBar/>} />
         <Route path="/" element={<LoginPage/>} /> 
         <Route path="/signup" element={<SignUp/>} />
       </Routes>
-      
-      
-       
 
     </BrowserRouter>
     
