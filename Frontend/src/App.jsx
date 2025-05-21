@@ -12,11 +12,12 @@ function App() {
     <>
     <BrowserRouter>
       
-      <Routes>
+      {/* <Routes>
         <Route path="/dashboard" element={<SideBar/>} />
         <Route path="/" element={<LoginPage/>} /> 
         <Route path="/signup" element={<SignUp/>} />
-      </Routes>
+      </Routes> */}
+      <SideBar/>
 
     </BrowserRouter>
     
