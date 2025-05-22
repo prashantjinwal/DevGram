@@ -1,26 +1,23 @@
-import HomeFilledIcon from '@mui/icons-material/HomeFilled';
-import ExploreIcon from '@mui/icons-material/Explore';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import Groups3Icon from '@mui/icons-material/Groups3';
-import Person2Icon from '@mui/icons-material/Person2';
 import DehazeIcon from '@mui/icons-material/Dehaze';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom'; // we'll use useLocation for initial active link
+import { sidebarItems } from '../../assets/Items';
 
 export const SideBar = () => {
   const [extended, setExtended] = useState(true);
+  
+  // Track selected path for highlighting
+  const location = useLocation();
+  const [selectedPath, setSelectedPath] = useState(location.pathname);
 
   const handleExtend = () => {
     setExtended((prev) => !prev);
   };
 
-  const sidebarItems = [
-    { icon: <HomeFilledIcon fontSize="medium" />, label: 'Home', path: 'Home' },
-    { icon: <ExploreIcon fontSize="medium" />, label: 'Explore', path: 'Explore' },
-    { icon: <NotificationsNoneIcon fontSize="medium" />, label: 'Notifications', path: 'Notifications' },
-    { icon: <Groups3Icon fontSize="medium" />, label: 'Communities', path: 'Communities' },
-    { icon: <Person2Icon fontSize="medium" />, label: 'Profile', path: 'Profile' },
-  ];
+  // When user clicks a sidebar item, update selectedPath
+  const handleSelect = (path) => {
+    setSelectedPath(path);
+  };
 
   return (
     <>
@@ -30,22 +27,33 @@ export const SideBar = () => {
           extended ? 'w-[20%]' : 'w-[6%]'
         }`}
       >
-        <div className={`flex ${extended ? "justify-between" : "justify-center" } px-4  pt-5`}>
+        <div className={`flex ${extended ? "justify-between" : "justify-center"} px-4 pt-5`}>
           {extended && <h3 className="fonttt text-3xl text-white font-semibold">Dev.Gram</h3>}
           <button onClick={handleExtend} className="text-white ">
-            <DehazeIcon  fontSize="large" />
+            <DehazeIcon fontSize="large" />
           </button>
         </div>
 
         <ul className="flex flex-col gap-5 items-start text-left w-full px-5 pt-12">
           {sidebarItems.map((item, index) => (
-            <Link to={item.path} key={index} className="w-full">
-            <li
-              key={index}
-              className={` ${extended || "flex justify-center"} text-white w-full text-xl py-3 px-4 cursor-pointer transition duration-300 ease-in-out hover:bg-white/10 hover:backdrop-blur-md hover:font-semibold rounded-xl flex items-center gap-2`}
+            <Link 
+              to={item.path} 
+              key={index} 
+              className="w-full"
+              onClick={() => handleSelect(item.path)} // update selected on click
             >
-              {item.icon} {extended && item.label}
-            </li>
+              <li
+                className={`${
+                  extended || "flex justify-center"
+                } text-white w-full text-xl py-3 px-4 cursor-pointer transition duration-300 ease-in-out rounded-xl flex items-center gap-2
+                ${
+                  selectedPath === item.path
+                    ? 'bg-white/10 backdrop-blur-md font-semibold' // selected styles similar to your hover effect
+                    : 'hover:bg-white/10 hover:backdrop-blur-md hover:font-semibold'
+                }`}
+              >
+                {item.icon} {extended && item.label}
+              </li>
             </Link>
           ))}
 
@@ -63,14 +71,20 @@ export const SideBar = () => {
           <Link
             to={item.path}
             key={index}
-            className="text-white flex flex-col items-center text-sm w-full"
+            className={`text-white flex flex-col items-center text-sm w-full
+              ${
+                selectedPath === item.path
+                  ? 'bg-white/10 backdrop-blur-md font-semibold rounded-full'
+                  : ''
+              }
+            `}
+            onClick={() => handleSelect(item.path)}
           >
-              {item.icon}
-              {/* <span className="text-xs">{item.label}</span> */}
+            {item.icon}
+            {/* <span className="text-xs">{item.label}</span> */}
           </Link>
         ))}
       </div>
-
     </>
   );
 };
