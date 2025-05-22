@@ -1,20 +1,43 @@
 import  Profile_pic  from "/ProfilePIC.jpg"
 
-export const Profile_H = () =>{
-    return(
-        <div className="flex flex-row p-4">
 
-            <div className="flex justify-center flex-col flex-1/3">
-            <div className="w-50 h-50  overflow-hidden "> 
-                <img className="rounded-full w-full h-full object-cover" src={Profile_pic} alt="Profile" />
-            </div>
-            <p>👋 Hi there! I'm Prashant, A passionate FullStack Web developer 🚀 Let's build something amazing together!</p>
-            </div>
+export const Profile_H = () => {
+  return (
+    <div className="flex flex-col md:flex-row items-center justify-between p-6 gap-8 flex-wrap bg-gray-900 rounded-lg shadow-md">
+      
+      
+      <div className="flex flex-col items-center text-center max-w-xs">
+        <img
+          src={Profile_pic}
+          alt="Profile"
+          className="rounded-full w-24 h-24 md:w-40 md:h-40 object-cover border-2 border-amber-100"
+        />
+        <p className="text-white text-base md:text-2xl font-semibold py-3 ">
+          Prashant_2005
+        </p>
+        <p className="text-sm md:text-base text-gray-300 leading-relaxed">
+          👋 Hi there! I'm Prashant, a passionate FullStack Web Developer 🚀 Let's build something amazing together!
+        </p>
+      </div>
 
-            <div className="flex justify-center">
-                <p className="text-white">foelelke</p>
-            </div>
 
+      {/* Follower Info */}
+      <div className="flex gap-8 md:gap-[5em] md:mr-[5em] justify-center items-center text-center">
+        <div className="text-white text-sm md:text-2xl font-semibold flex flex-col">
+          Following
+          <span className="font-normal text-blue-500">239</span>
         </div>
-    );
-}
+        <div className="text-white text-sm md:text-2xl font-semibold flex flex-col">
+          Followers
+          <span className="font-normal text-blue-500">134k</span>
+        </div>
+        <div className="text-white text-sm md:text-2xl font-semibold flex flex-col">
+          Pojects
+          <span className="font-normal text-blue-500">38</span>
+        </div>
+      </div>
+
+
+    </div>
+  );
+};

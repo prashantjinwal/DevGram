@@ -17,7 +17,7 @@ export const SideBar = ({ extended, setExtended }) => {
 
   return (
     <>
-      {/* Sidebar for desktop & tablet */}
+      {/* Sidebar  */}
       <div
         className={`hidden md:flex fixed top-0 left-0 h-screen flex-col bg-black border-r border-white z-50 transition-all duration-300 ${
           extended ? 'w-[20%]' : 'w-[6%]'
