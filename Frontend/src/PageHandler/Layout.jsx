@@ -1,16 +1,21 @@
-import { Outlet } from 'react-router'
-import {SideBar} from '../components/Navigator/SideBar.jsx'
-export const Layout =()=>{
-    return(
+import { Outlet } from 'react-router';
+import { SideBar } from '../components/Navigator/SideBar.jsx';
+import { useState } from 'react';
 
+export const Layout = () => {
+  const [extended, setExtended] = useState(true);
 
-    <div className="flex min-h-screen">
-      <SideBar />
-      <div className="flex-1 bg-zinc-900 text-white p-4 overflow-y-auto">
+  return (
+    <div className="bg-zinc-900 text-white min-h-screen">
+      <SideBar extended={extended} setExtended={setExtended} />
+
+      <div
+        className={`transition-all duration-300 h-screen overflow-y-auto p-4 md:pt-6 ${
+          extended ? 'md:ml-[20%]' : 'md:ml-[6%]'
+        }`}
+      >
         <Outlet />
       </div>
     </div>
-
-
-    )
-}
+  );
+};
