@@ -58,19 +58,19 @@ export const SideBar = () => {
       </div>
 
       {/* Bottom navigation bar for mobile */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-black border-t border-white flex justify-around py-2 z-50">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-black border-t border-white flex justify-around py-4 z-50">
         {sidebarItems.map((item, index) => (
-          <Link to={item.path} key={index} className="w-full">
-          <button
+          <Link
+            to={item.path}
             key={index}
-            className="text-white flex flex-col items-center text-sm"
+            className="text-white flex flex-col items-center text-sm w-full"
           >
-            {item.icon}
-            {/* <span className="text-xs">{item.label}</span> */}
-          </button>
+              {item.icon}
+              {/* <span className="text-xs">{item.label}</span> */}
           </Link>
         ))}
       </div>
+
     </>
   );
 };
