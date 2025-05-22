@@ -66,7 +66,7 @@ export const SideBar = () => {
             className="text-white flex flex-col items-center text-sm"
           >
             {item.icon}
-            <span className="text-xs">{item.label}</span>
+            {/* <span className="text-xs">{item.label}</span> */}
           </button>
           </Link>
         ))}
