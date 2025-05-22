@@ -5,6 +5,7 @@ import Groups3Icon from '@mui/icons-material/Groups3';
 import Person2Icon from '@mui/icons-material/Person2';
 import DehazeIcon from '@mui/icons-material/Dehaze';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const SideBar = () => {
   const [extended, setExtended] = useState(true);
@@ -14,11 +15,11 @@ export const SideBar = () => {
   };
 
   const sidebarItems = [
-    { icon: <HomeFilledIcon fontSize="medium" />, label: 'Home' },
-    { icon: <ExploreIcon fontSize="medium" />, label: 'Explore' },
-    { icon: <NotificationsNoneIcon fontSize="medium" />, label: 'Notifications' },
-    { icon: <Groups3Icon fontSize="medium" />, label: 'Communities' },
-    { icon: <Person2Icon fontSize="medium" />, label: 'Profile' },
+    { icon: <HomeFilledIcon fontSize="medium" />, label: 'Home', path: 'Home' },
+    { icon: <ExploreIcon fontSize="medium" />, label: 'Explore', path: 'Explore' },
+    { icon: <NotificationsNoneIcon fontSize="medium" />, label: 'Notifications', path: 'Notifications' },
+    { icon: <Groups3Icon fontSize="medium" />, label: 'Communities', path: 'Communities' },
+    { icon: <Person2Icon fontSize="medium" />, label: 'Profile', path: 'Profile' },
   ];
 
   return (
@@ -38,12 +39,14 @@ export const SideBar = () => {
 
         <ul className="flex flex-col gap-5 items-start text-left w-full px-5 pt-12">
           {sidebarItems.map((item, index) => (
+            <Link to={item.path} key={index} className="w-full">
             <li
               key={index}
               className={` ${extended || "flex justify-center"} text-white w-full text-xl py-3 px-4 cursor-pointer transition duration-300 ease-in-out hover:bg-white/10 hover:backdrop-blur-md hover:font-semibold rounded-xl flex items-center gap-2`}
             >
               {item.icon} {extended && item.label}
             </li>
+            </Link>
           ))}
 
           {extended && (
@@ -57,6 +60,7 @@ export const SideBar = () => {
       {/* Bottom navigation bar for mobile */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-black border-t border-white flex justify-around py-2 z-50">
         {sidebarItems.map((item, index) => (
+          <Link to={item.path} key={index} className="w-full">
           <button
             key={index}
             className="text-white flex flex-col items-center text-sm"
@@ -64,6 +68,7 @@ export const SideBar = () => {
             {item.icon}
             <span className="text-xs">{item.label}</span>
           </button>
+          </Link>
         ))}
       </div>
     </>
