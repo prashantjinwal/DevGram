@@ -13,14 +13,14 @@ export const Profile_H = () => {
           className="rounded-full w-24 h-24 md:w-40 md:h-40 object-cover border-2 border-amber-100"
         />
         <p className="text-white text-base md:text-2xl font-semibold py-3 ">
-          Prashant_2005
+          Prashant_2005 
         </p>
         <p className="text-sm md:text-base text-gray-300 leading-relaxed">
           👋 Hi there! I'm Prashant, a passionate FullStack Web Developer 🚀 Let's build something amazing together!
         </p>
-        <div className="flex gap-3 w-full justify-center" >
-          <button className="text-black font-semibold bg-white w-[40%] py-3 my-3 rounded-md hover:scale-104 transition-all duration-150 ">Edit Profile</button>
-          <button className="text-white border-2 border-amber-50 font-semibold bg-transparent w-[40%] py-3 my-3 rounded-md hover:scale-104 transition-all duration-150 ">Share Profile</button>
+        <div className="flex gap-3 w-full justify-center my-1" >
+          <button className="text-black font-semibold bg-white w-full md:w-[40%]  py-3 my-3 rounded-md hover:scale-104 transition-all duration-150 ">Edit Profile</button>
+          <button className="text-white border-2 border-amber-50 font-semibold bg-transparent  w-full md:w-[40%] py-3 my-3 rounded-md hover:scale-104 transition-all duration-150 ">Share Profile</button>
         </div>
       </div>
 
