@@ -1,3 +1,4 @@
+
 import  Profile_pic  from "/ProfilePIC.jpg"
 
 
@@ -40,7 +41,6 @@ export const Profile_H = () => {
           <span className="font-normal text-blue-500 cursor-pointer hover:underline">38</span>
         </div>
       </div>
-
 
     </div>
   );
