@@ -18,6 +18,10 @@ export const Profile_H = () => {
         <p className="text-sm md:text-base text-gray-300 leading-relaxed">
           👋 Hi there! I'm Prashant, a passionate FullStack Web Developer 🚀 Let's build something amazing together!
         </p>
+        <div className="flex gap-3 w-full justify-center" >
+          <button className="text-black font-semibold bg-white w-[40%] py-3 my-3 rounded-md hover:scale-104 transition-all duration-150 ">Edit Profile</button>
+          <button className="text-white border-2 border-amber-50 font-semibold bg-transparent w-[40%] py-3 my-3 rounded-md hover:scale-104 transition-all duration-150 ">Share Profile</button>
+        </div>
       </div>
 
 
@@ -25,15 +29,15 @@ export const Profile_H = () => {
       <div className="flex gap-8 md:gap-[5em] md:mr-[5em] justify-center items-center text-center">
         <div className="text-white text-sm md:text-2xl font-semibold flex flex-col">
           Following
-          <span className="font-normal text-blue-500">239</span>
+          <span className="font-normal text-blue-500 cursor-pointer hover:underline">239</span>
         </div>
         <div className="text-white text-sm md:text-2xl font-semibold flex flex-col">
           Followers
-          <span className="font-normal text-blue-500">134k</span>
+          <span className="font-normal text-blue-500 cursor-pointer hover:underline">134k</span>
         </div>
         <div className="text-white text-sm md:text-2xl font-semibold flex flex-col">
           Pojects
-          <span className="font-normal text-blue-500">38</span>
+          <span className="font-normal text-blue-500 cursor-pointer hover:underline">38</span>
         </div>
       </div>
 
