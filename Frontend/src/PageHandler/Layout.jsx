@@ -10,7 +10,7 @@ export const Layout = () => {
       <SideBar extended={extended} setExtended={setExtended} />
 
       <div
-        className={`transition-all duration-300 h-screen overflow-y-auto p-4 md:pt-6 ${
+        className={`transition-all duration-300 h-screen overflow-y-auto p-2 md:pt-2 ${
           extended ? 'md:ml-[20%]' : 'md:ml-[6%]'
         }`}
       >
