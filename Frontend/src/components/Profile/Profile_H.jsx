@@ -1,11 +1,17 @@
 
+import ResponsiveButton from "../buttons/ReusebleButton";
 import  Profile_pic  from "/ProfilePIC.jpg"
 
 
+
 export const Profile_H = () => {
+ 
+
+
   return (
+
+
     <div className="flex flex-col md:flex-row items-center justify-between p-6 gap-8 flex-wrap bg-gray-900 rounded-lg shadow-md">
-      
       
       <div className="flex flex-col items-center text-center max-w-xs">
         <img
@@ -19,10 +25,12 @@ export const Profile_H = () => {
         <p className="text-sm md:text-base text-gray-300 leading-relaxed">
           👋 Hi there! I'm Prashant, a passionate FullStack Web Developer 🚀 Let's build something amazing together!
         </p>
-        <div className="flex gap-3 w-full justify-center my-1" >
-          <button className="text-black font-semibold bg-white w-full md:w-[40%]  py-3 my-3 rounded-md hover:scale-104 transition-all duration-150 ">Edit Profile</button>
-          <button className="text-white border-2 border-amber-50 font-semibold bg-transparent  w-full md:w-[40%] py-3 my-3 rounded-md hover:scale-104 transition-all duration-150 ">Share Profile</button>
+
+        <div className="flex gap-3 md:w-full w-[80%] justify-center my-1" >
+          <ResponsiveButton label={"Edit Profile"} onClick={null} bgColor={"bg-white"} textColor={"text-black"} border={null}   />
+          <ResponsiveButton label={"Share Profile"} onClick={null} bgColor={"bg-transparent"} textColor={"text-white"} border={"border-2 border-amber-50"}  />
         </div>
+
       </div>
 
 
