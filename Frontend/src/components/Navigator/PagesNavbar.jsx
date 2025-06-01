@@ -64,7 +64,7 @@ export const PagesNavbar = ({ page }) => {
         </Search>
       </div>
 
-      {/* Mobile Search Toggle */}
+      {/* Mobile Search */}
       <div className="block sm:hidden relative">
         {showSearch ? (
           <ClickAwayListener onClickAway={closeSearch}>
