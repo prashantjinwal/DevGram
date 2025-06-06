@@ -1,13 +1,14 @@
 import User from "../models/login.models.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import generateUniqueUsername from "../functions/genrateusername.js"
 
 
 export const registerUser = async (req, res) =>{
     try {
-        const {email, password} = req.body;
+        const {email, password, bio} = req.body;
 
-        // check if user exists
+        // check if user existsz
         const existingUser = await User.findOne({email});
         if(existingUser){
             return res.status(400).json({message: "User already exists"});
@@ -15,7 +16,20 @@ export const registerUser = async (req, res) =>{
 
         // hash pasword
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = await User({email, password:hashedPassword});
+        // const newUser = await User({email, password:hashedPassword});
+        const username = await generateUniqueUsername(email);
+
+        const newUser = await User({
+            email,
+            password:hashedPassword,
+            profile:{
+                username,
+                followers: 0,
+                following: 0,
+                bio,
+            }
+        })
+
         await newUser.save();
         res.status(201).json({message: "User registed successfully"})
 

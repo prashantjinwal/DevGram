@@ -36,7 +36,7 @@ const SignUp = () => {
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
       // Redirect to dashboard or home
-      navigate("/");
+      navigate("/dashboard");
     } catch (err) {
       const message =
         err.response?.data?.message || "Signup failed. Try again.";
@@ -109,7 +109,7 @@ const SignUp = () => {
 
         <p className="text-gray-400 pt-5 text-xs sm:text-sm text-center">
           You already have an account?{" "}
-          <Link to="/" className="text-blue-800 underline">
+          <Link to="/login" className="text-blue-800 underline">
             Log In
           </Link>
         </p>

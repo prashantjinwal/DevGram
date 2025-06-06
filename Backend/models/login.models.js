@@ -12,6 +12,12 @@ const userSchema = new mongoose.Schema(
             required:true,
             minlength: 6
 
+        }, 
+        profile:{
+            username:String,
+            followers:Number,
+            following:Number,
+            bio:String,
         }
     },{timestamps:true}
 )
