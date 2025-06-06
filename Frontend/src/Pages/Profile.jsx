@@ -5,7 +5,7 @@ import { ProjectBar } from "../components/Profile/ProjectBar";
 import { Link } from "react-router";
 
 export const Profile = () =>{
-    const [logged] = useState(false)
+    const [logged] = useState(true)
     return(
         <>
             {

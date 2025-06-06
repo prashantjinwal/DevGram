@@ -1,15 +1,40 @@
-
+import { useEffect, useState } from "react";
 import ResponsiveButton from "../buttons/ReusebleButton";
 import  Profile_pic  from "/ProfilePIC.jpg"
-
+import api from "../../axios/axios";
 
 
 export const Profile_H = () => {
+const [profile, setprofile] = useState(null)
+const [error, setError] = useState(null)
 
+  useEffect(()=>{
+    const fetchProfile = async () =>{
+      const token = localStorage.getItem("token")
+      try{
+        const res = await api.get("/auth/profile",{
+          headers:{
+            Authorization: `Bearer ${token}`
+          }
+        })
+        setprofile(res.data.profile)
+      }catch(err){
+        setError(err.response?.data?.message || "Failed to fetch profile");
+      }
 
+    }
+    fetchProfile();
+  },[])
+
+  if (error) {
+    return <div className="text-red-500 text-center">{error}</div>;
+  }
+
+  if (!profile) {
+    return <div className="text-white text-center">Loading...</div>;
+  }
 
   return (
-
 
     <div className="flex flex-col md:flex-row items-center justify-between p-6 gap-8 flex-wrap bg-gray-900 rounded-lg shadow-md">
       
@@ -20,7 +45,7 @@ export const Profile_H = () => {
           className="rounded-full w-24 h-24 md:w-40 md:h-40 object-cover border-2 border-amber-100"
         />
         <p className="text-white text-base md:text-2xl font-semibold py-3 ">
-          Prashant_2005 
+          {profile.username}
         </p>
         <p className="text-sm md:text-base text-gray-300 leading-relaxed">
           👋 Hi there! I'm Prashant, a passionate FullStack Web Developer 🚀 Let's build something amazing together!
@@ -38,11 +63,11 @@ export const Profile_H = () => {
       <div className="flex gap-8 md:gap-[5em] md:mr-[5em] justify-center items-center text-center">
         <div className="text-white text-sm md:text-2xl font-semibold flex flex-col">
           Following
-          <span className="font-normal text-blue-500 cursor-pointer hover:underline">239</span>
+          <span className="font-normal text-blue-500 cursor-pointer hover:underline">{profile.following}</span>
         </div>
         <div className="text-white text-sm md:text-2xl font-semibold flex flex-col">
           Followers
-          <span className="font-normal text-blue-500 cursor-pointer hover:underline">134k</span>
+          <span className="font-normal text-blue-500 cursor-pointer hover:underline">{profile.followers}</span>
         </div>
         <div className="text-white text-sm md:text-2xl font-semibold flex flex-col">
           Pojects
