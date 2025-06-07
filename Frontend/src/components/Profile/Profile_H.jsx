@@ -3,12 +3,14 @@ import ResponsiveButton from "../buttons/ReusebleButton";
 import  Profile_pic  from "/ProfilePIC.jpg"
 import api from "../../axios/axios";
 import ProfileSkeleton from "./Skeleton";
+import EditDialog from "./EditDailog";
 
 
 export const Profile_H = () => {
 const [profile, setprofile] = useState(null)
 const [error, setError] = useState(null)
 const [delay,setdelay] = useState(false)
+const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(()=>{
     const fetchProfile = async () =>{
@@ -39,7 +41,8 @@ const [delay,setdelay] = useState(false)
   }
 
   return (
-
+    <>
+   <EditDialog isOpen={isDialogOpen} setIsOpen={setIsDialogOpen} />
     <div className="flex flex-col md:flex-row items-center justify-between p-6 gap-8 flex-wrap bg-gray-900 rounded-lg shadow-md">
       <div className="flex flex-col items-center text-center max-w-xs">
         <img
@@ -54,7 +57,7 @@ const [delay,setdelay] = useState(false)
           👋 Hi there! I'm Prashant, a passionate FullStack Web Developer 🚀 Let's build something amazing together!
         </p>
         <div className="flex gap-3 md:w-full w-[80%] justify-center my-1" >
-          <ResponsiveButton label={"Edit Profile"} onClick={null} bgColor={"bg-white"} textColor={"text-black"} border={null}   />
+          <ResponsiveButton label={"Edit Profile"} bgColor={"bg-white"} textColor={"text-black"} border={null} onClick={() => setIsDialogOpen(true)}   />
           <ResponsiveButton label={"Share Profile"} onClick={null} bgColor={"bg-transparent"} textColor={"text-white"} border={"border-2 border-amber-50"}  />
         </div>
       </div>
@@ -76,5 +79,6 @@ const [delay,setdelay] = useState(false)
         </div>
       </div>
     </div>
+    </>
   );
 };
