@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import ResponsiveButton from "../buttons/ReusebleButton";
 import  Profile_pic  from "/ProfilePIC.jpg"
 import api from "../../axios/axios";
+import ProfileSkeleton from "./Skeleton";
 
 
 export const Profile_H = () => {
 const [profile, setprofile] = useState(null)
 const [error, setError] = useState(null)
+const [delay,setdelay] = useState(false)
 
   useEffect(()=>{
     const fetchProfile = async () =>{
@@ -18,6 +20,8 @@ const [error, setError] = useState(null)
           }
         })
         setprofile(res.data.profile)
+        setTimeout(()=>{setdelay(true)}
+        ,1000)
       }catch(err){
         setError(err.response?.data?.message || "Failed to fetch profile");
       }
@@ -30,14 +34,13 @@ const [error, setError] = useState(null)
     return <div className="text-red-500 text-center">{error}</div>;
   }
 
-  if (!profile) {
-    return <div className="text-white text-center">Loading...</div>;
+  if (!profile || !delay) {
+    return <ProfileSkeleton/>
   }
 
   return (
 
     <div className="flex flex-col md:flex-row items-center justify-between p-6 gap-8 flex-wrap bg-gray-900 rounded-lg shadow-md">
-      
       <div className="flex flex-col items-center text-center max-w-xs">
         <img
           src={Profile_pic}
@@ -50,12 +53,10 @@ const [error, setError] = useState(null)
         <p className="text-sm md:text-base text-gray-300 leading-relaxed">
           👋 Hi there! I'm Prashant, a passionate FullStack Web Developer 🚀 Let's build something amazing together!
         </p>
-
         <div className="flex gap-3 md:w-full w-[80%] justify-center my-1" >
           <ResponsiveButton label={"Edit Profile"} onClick={null} bgColor={"bg-white"} textColor={"text-black"} border={null}   />
           <ResponsiveButton label={"Share Profile"} onClick={null} bgColor={"bg-transparent"} textColor={"text-white"} border={"border-2 border-amber-50"}  />
         </div>
-
       </div>
 
 
@@ -74,7 +75,6 @@ const [error, setError] = useState(null)
           <span className="font-normal text-blue-500 cursor-pointer hover:underline">38</span>
         </div>
       </div>
-
     </div>
   );
 };
