@@ -2,6 +2,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
 export default function EditDialog({ isOpen, setIsOpen }) {
+
+    
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={() => setIsOpen(false)}>
@@ -29,20 +31,45 @@ export default function EditDialog({ isOpen, setIsOpen }) {
                 >
                   Edit Profile
                 </Dialog.Title>
-                <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    You can update your username, bio, and other details here.
-                  </p>
-                </div>
+                {/* here is make code */}
+                
 
-                <div className="mt-4">
+                
+                <ul className='gap-4 flex flex-col p-4'>
+
+                  <li>
+                  <label>Username :</label>
+                  <input className=' w-full p-2 bg-gray-200 rounded-md ' type='text'  />
+                  </li>
+
+                  <li>
+                  <label>Bio :</label>
+                  {/* <input className=' w-full p-2 bg-gray-200 rounded-md ' type='text'  /> */}
+                  <textarea className='w-full p-2 bg-gray-200 rounded-md'></textarea>
+                  </li>
+                  
+                  
+                </ul>
+
+
+                
+                <div className="mt-4 flex justify-between">
                   <button
                     type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                    className=" rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
                     onClick={() => setIsOpen(false)}
                   >
                     Close
                   </button>
+
+                  <button
+                    type="button"
+                    className=" rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Save
+                  </button>
+
                 </div>
               </Dialog.Panel>
             </Transition.Child>
